@@ -10,19 +10,27 @@ function AudioElement(props) {
     
     
 
-    React.useEffect(() => {
-      // console.log(ref.current.audioEl.current)
-      var a = document.querySelector("audio#Audio")
-      // var audio = new Audio(props.src,ref.current.audioEl.current)
-      var audio = new Audio(props.src,a)
-      setAudioState(audio)
-      var Data = audio.init()
-      console.log(Data)
-     
-      
+    // React.useEffect(() => {
+    //   // console.log(ref.current.audioEl.current)
+    //   var a = document.querySelector("audio#Audio")
+    //   // var audio = new Audio(props.src,ref.current.audioEl.current)
+    //   var audio = new Audio(props.src,a)
+    //   audio.init()
+    //   // setAudioState(audio)
+    //   // var Data = audio.getData()
+    //   // console.log(Data)
+    //   // audio.getContext();
+    //   // context.resume()
+    //   //  var x = Audio.getData()
+    //    console.log(audio.init())
 
-    },[])
-
+    // },[])
+const handleClick =  () => {
+  var a = document.querySelector("audio#Audio")
+  var audio = new Audio(props.src,a)
+      var data = audio.init()
+      console.log(data)
+}
   return (
 //     <ReactAudioPlayer
     
@@ -30,7 +38,9 @@ function AudioElement(props) {
 //   ref={ref}
 //   controls
 // />
-<div></div>
+<div>
+  <p onClick={handleClick}>sdfsdsdsfsfsdfsdf</p>
+</div>
   )
 }
 

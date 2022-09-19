@@ -9,12 +9,16 @@ class Audio {
     init(){
         
     var context = new AudioContext()
-    console.log(this.audio)
+    // console.log(this.audio)
     this.audio.src = this.path;
+    console.log(context)
+    // this.audio.muted="true"
     var src = context.createMediaElementSource(this.audio);
-    // src.disconnect()
+    this.audio.crossOrigin = "anonymous";
+    console.log(src)
     var analyser = context.createAnalyser();
     src.connect(analyser);
+    src.connect(context.destination);
     analyser.connect(context.destination);
     analyser.fftSize = 512;
     var bufferLength = analyser.frequencyBinCount;
@@ -22,12 +26,6 @@ class Audio {
     return dataArray
    }
     // static masterGainNode = Audio.context.createGain()
-   getData(){
-    return this.data;
-   }
-   getSource(){
-    return this.source;
-   }
 }
 
 export default Audio
