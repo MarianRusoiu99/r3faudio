@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import React,{createContext} from "react"
 import './App.css';
+import Audio from './Components/Audio';
+import mp3 from "./AudioAssets/a.mp3";
+
+export const aContext = createContext(undefined);
 
 function App() {
+  const [pass, setPass] = React.useState({context: null, audioSource:mp3, update: null})
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <aContext.Provider value={pass}>
+      <Audio src = {mp3}/>
+      </aContext.Provider>
     </div>
   );
 }
