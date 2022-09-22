@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-     <Audio src = {mp3}/>
+     <AudioElement src = {mp3}/>
 
     </div>
   );
