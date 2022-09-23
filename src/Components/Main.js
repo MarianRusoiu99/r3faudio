@@ -7,11 +7,11 @@ import Box from './Box.js';
 import { useFrame } from '@react-three/fiber';
 function Main() {
     const box = React.useRef()
-    // const geometryRef = React.useRef()
+    
 
     var update = 1
     const { data } = useContext(appContext);
-    console.log(data.analyser)
+    
     useFrame(
         () => {
 
@@ -25,8 +25,13 @@ function Main() {
             } else {
                 update = 0;
             }
-            box.current.rotation.x += update / 100
-            console.log(box.current)
+            box.current.rotation.x += update / 1000
+            box.current.rotation.z += update / 1000
+            // console.log(box.current.geometry.attributes.position.array)
+            for(let i=0;i<box.current.geometry.attributes.position.array.length;i++){
+                // console.log(box.current.geometry.attributes.position.array[i])
+                // box.current.geometry.attributes.position.array[i] += Math.sin(update)
+            }
         }
     )
     return (

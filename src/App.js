@@ -11,14 +11,24 @@ export const appContext = createContext();
 function App() {
   const [data, setData] = React.useState({ context: null, analyser: null, dataArray: null })
   const handleClick = () => {
-    var a = document.querySelector("audio#Audio")
-    var audio = new Audio(mp3, a)
-    var data = audio.init()
-    setData({ context: data.context, analyser: data.analyser, dataArray: data.dataArray })
-    console.log(data)
-    var b = document.querySelector("#startBtn").style.display = "none";
-    a.play()
+
+    var file = document.getElementById("thefile");
+    file.onchange = function(){
+      var files = this.files;
+      var a = document.querySelector("audio#Audio")
+      var audio = new Audio(URL.createObjectURL(files[0]), a)
+      
+      var data = audio.init()
+      setData({ context: data.context, analyser: data.analyser, dataArray: data.dataArray })
+      a.play()
+      var overlay = document.getElementsByClassName("overlay");
+   
+      overlay[0].style.display = "none";
+    }
+
+    
   }
+    
 
 
 
@@ -31,7 +41,14 @@ function App() {
       <appContext.Provider
         value={{ data }}
       >
-        <p id="startBtn" onClick={handleClick}>Start</p>
+
+
+
+        <div className="overlay">
+
+        <input onClick={handleClick} type="file" id="thefile" accept="audio/*" name={"sdfsdfsd"}/>
+      
+        </div>
         <Canvas flat linear>
           <Main />
         </Canvas>

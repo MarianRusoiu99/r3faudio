@@ -6,9 +6,9 @@ function Box(props) {
 
 
     return (
-        <mesh ref={props.refi}>
-            <boxGeometry attach="geometry" args={[2, 2, 2]} />
-            <meshStandardMaterial attach="material" color={0x0000FF} />
+        <mesh ref={props.refi} >
+            <boxGeometry  attach="geometry" args={[2, 2, 2]} />
+            <meshStandardMaterial wireframe={true} attach="material" color={0x0000FF} />
         </mesh>
     )
 }
