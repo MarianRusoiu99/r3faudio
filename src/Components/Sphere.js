@@ -11,7 +11,7 @@ function Sphere(props) {
     
     return (
         <mesh ref={props.refi} castShadow>
-            <icosahedronGeometry  attach="geometry" args={[2, 10, 10]} />
+            <icosahedronGeometry  attach="geometry" args={[2, 5, 5]} />
             <MeshDistortMaterial  attach="material"
             // wireframe={true}
             color={"#fff"}

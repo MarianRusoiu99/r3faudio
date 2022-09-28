@@ -50,7 +50,7 @@ function App() {
       
         </div>
         <Canvas flat linear>
-          <ambientLight/>
+          
           <Main />
         </Canvas>
 

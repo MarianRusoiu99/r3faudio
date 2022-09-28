@@ -3,6 +3,7 @@ import { OrbitControls } from "@react-three/drei";
 import { useContext } from "react";
 import { appContext } from "../App";
 import Box from './Box.js';
+import Plane from "./Plane"
 import Sphere from './Sphere.js';
 import * as THREE from "three"
 import {
@@ -19,6 +20,7 @@ import { useFrame } from '@react-three/fiber';
 function Main() {
     const box = React.useRef()
     const post = React.useRef()
+    const control = React.useRef()
     
 
     var update = 1
@@ -46,24 +48,27 @@ function Main() {
             } else {
                 update = 0;
             }
-            box.current.rotation.y += update / 5000
-            box.current.rotation.z += update / 5000
+            box.current.rotation.y += update / 10000
+            box.current.rotation.z += update / 4000
             box.current.rotation.x += update / 5000
-            // box.current.rotation.z += update / 1000
+            // box.current.rotation.z += update / 5000
             box.current.material._time.value += update/10 
-            box.current.material._distort.value = smootherstep(Math.pow(2,update/29)/9+1.0,0.5,6)
+            // box.current.material._distort.value = smootherstep(Math.pow(2,update/29)/9+1.0,0.5,6)
+            box.current.material._distort.value = smootherstep(Math.pow(2,update/18)/9+1.0,0.5,4)
             box.current.material._sheen = update/100
             
-            
+            console.log(control.current)
+            control.current.autoRotate = true
+            control.current.autoRotateSpeed = update/100
         }
     )
     return (
         <>
             {/* <Box refi={box} /> */}
-                   {/* <pointLight position={[20, 20, 50]}  intensity={20.5} color={"0xd996d4"} /> */}
-            <pointLight position={[-20, -20, -50]}  intensity={20.5} color={"#d996d4"} />
-            <Sphere refi={box}/>
-            <OrbitControls  autoRotate={true} />
+                   <pointLight position={[0, 0, 500]}  intensity={4.5} color={"#fff"} />
+            <pointLight position={[0, 0, -500]}  intensity={20.5} color={"#a600ff"} />
+            <Plane refi={box}/>
+            <OrbitControls ref={control} />
             <EffectComposer multisampling={0} disableNormalPass={true}>
         <DepthOfField
           focusDistance={0}
@@ -79,7 +84,7 @@ function Main() {
         />
         <Noise opacity={0.35} />
         <Vignette eskil={false} offset={0.3} darkness={1.1} />
-        <ChromaticAberration ref={post} offset={new THREE.Vector2(0.1,0.03)}/>
+        <ChromaticAberration ref={post} offset={new THREE.Vector2(0.4,0.4)}/>
       </EffectComposer>
         </>
     )
