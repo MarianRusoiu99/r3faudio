@@ -1,7 +1,7 @@
 import React, { createContext, useRef } from "react"
 import './App.css';
 import { Canvas } from "@react-three/fiber";
-import mp3 from "./AudioAssets/a.mp3";
+
 
 import Audio from "./Utils/Audio"
 import Main from "./Components/Main"
@@ -50,6 +50,7 @@ function App() {
       
         </div>
         <Canvas flat linear>
+          <ambientLight/>
           <Main />
         </Canvas>
 
