@@ -49,7 +49,7 @@ function App() {
         <input onClick={handleClick} type="file" id="thefile" accept="audio/*" name={"sdfsdfsd"}/>
       
         </div>
-        <Canvas flat linear>
+        <Canvas camera={{position:[0,0,2.01],fov: 7000}} flat linear>
           <ambientLight/>
           <Main />
         </Canvas>
