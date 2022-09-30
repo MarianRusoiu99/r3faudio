@@ -17,7 +17,7 @@
     position:absolute;
     top:90%;
     width:80%;
-    opacity: 0.01;
+    opacity: 0;
     transform: translate(13%,0%);
 }
 #Audio:hover{
